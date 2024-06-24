@@ -1,0 +1,15 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+    background-color: lightgrey;
+}
+.alert {
+    // position: fixed;
+    // top: 50px;
+    // left: 10%;
+    padding: 16px 50px;
+    min-width: 40%;
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

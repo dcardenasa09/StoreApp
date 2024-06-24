@@ -1,0 +1,32 @@
+<div class="row justify-content-center align-items-start p-5">
+    <div class="col-12 col-md-10 col-lg-8 mb-5">
+        <h2>Lista de productos</h2>
+    </div>
+    <div class="col-12 text-center" *ngIf="productList.length === 0">
+        La lista de productos está vacia.
+    </div>
+    <div class="col-12 col-md-10 col-lg-8" *ngIf="productList.length > 0">
+        <div class="row d-flex justify-content-center align-items-start">
+            <div class="col-12 col-md-6 col-lg-4" *ngFor="let item of productList">
+                <div class="card w-100 mb-3">
+                    <div class="card-body">
+                        <div class="row d-flex align-items-start">
+                            <div class="col-md-4">
+                                <img [src]="item.urlImage" *ngIf="item.urlImage === ''" class="img-fluid rounded-start" alt="...">
+                                <img src="../../../assets/images/cart.png" *ngIf="item.urlImage !== ''" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <h5 class="card-title">Clave: {{ item.key }} <br/> {{ item.description }}</h5>
+                                <p class="card-text">{{ item.price | currency }}</p>
+                                <p class="card-text"><small class="text-body-secondary">Disponible: {{ item.stock }}</small></p>
+                                <div class="d-flex justify-content-end" *ngIf="isAuthenticated() && !isAdminAuthenticated()">
+                                    <button class="btn btn-outline-secondary" (click)="addCart(item)"><i class="bi bi-cart-plus"></i> Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

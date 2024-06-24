@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-10 col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="mb-4">Lista de compras</h2>
+                <div class="col-12 text-center" *ngIf="purchases.length === 0">
+                    No tienes compras en tu carrito.
+                </div>
+                <div *ngIf="purchases.length > 0">
+                    <table class="table mb-4">
+                        <thead>
+                            <tr>
+                                <th>N° de orden</th>
+                                <th>Fecha</th>
+                                <th class="text-end">Total</th>
+                                <th class="text-center">Estatus</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of purchases">
+                                <td>{{ item.folio }}</td>
+                                <td>{{ item.date | date: 'dd-mm-yyyy' }}</td>
+                                <td class="text-end">{{ item.total | currency }}</td>
+                                <td class="text-center">
+                                    <span class="badge p-2" [ngClass]="item.status == 2 ? 'text-bg-success' : 'text-bg-danger'">{{item.status == 2 ? 'Completada' : 'Cancelada'}}</span>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-danger" (click)="removeItem(item)"><i class="bi bi-x-circle"></i> Cancelar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

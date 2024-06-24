@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-10 col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="mb-4">Lista de productos</h2>
+                <div class="d-flex justify-content-end align-items-center mb-4">
+                    <button class="btn btn-success" (click)="create()"><i class="bi bi-plus-circle"></i> Agregar</button>
+                </div>
+                <div class="col-12 text-center" *ngIf="products.length === 0">
+                    No tienes productos en tu carrito.
+                </div>
+                <div *ngIf="products.length > 0">
+                    <table class="table mb-4">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th class="text-center">Stock</th>
+                                <th class="text-end">Precio</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of products">
+                                <td>{{ item.key }}</td>
+                                <td>{{ item.description }}</td>
+                                <td class="text-center">{{ item.stock }}</td>
+                                <td class="text-end">{{ item.price | currency }}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-secondary me-2" (click)="editItem(item)"><i class="bi bi-pencil-square"></i> </button>
+                                    <button class="btn btn-outline-danger" (click)="removeItem(item)"><i class="bi bi-trash3"></i> </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
